@@ -11,11 +11,11 @@ function Home({ setMode }) {
 
       <div className="flex gap-4" style={{ flexWrap: 'wrap', justifyContent: 'center' }}>
         <button 
-          className="glass-panel flex-col items-center gap-4" 
-          style={{ width: '200px', height: '220px', transition: 'all 0.3s' }}
+          className="brutal-panel flex-col items-center gap-4" 
+          style={{ width: '200px', height: '220px', cursor: 'pointer' }}
           onClick={() => setMode('camera')}
         >
-          <div style={{ background: 'rgba(59, 130, 246, 0.2)', padding: '1rem', borderRadius: '50%' }}>
+          <div style={{ background: 'var(--bg-primary)', border: '2px solid var(--accent-color)', padding: '1rem', borderRadius: '0', boxShadow: '4px 4px 0px var(--accent-color)' }}>
             <Camera size={48} color="var(--accent-color)" />
           </div>
           <h3 style={{ fontSize: '1.25rem', marginTop: '0.5rem' }}>Camera Mode</h3>
@@ -23,11 +23,11 @@ function Home({ setMode }) {
         </button>
 
         <button 
-          className="glass-panel flex-col items-center gap-4" 
-          style={{ width: '200px', height: '220px', transition: 'all 0.3s' }}
+          className="brutal-panel flex-col items-center gap-4" 
+          style={{ width: '200px', height: '220px', cursor: 'pointer' }}
           onClick={() => setMode('viewer')}
         >
-          <div style={{ background: 'rgba(16, 185, 129, 0.2)', padding: '1rem', borderRadius: '50%' }}>
+          <div style={{ background: 'var(--bg-primary)', border: '2px solid var(--success-color)', padding: '1rem', borderRadius: '0', boxShadow: '4px 4px 0px var(--success-color)' }}>
             <Monitor size={48} color="var(--success-color)" />
           </div>
           <h3 style={{ fontSize: '1.25rem', marginTop: '0.5rem' }}>Viewer Mode</h3>

@@ -65,7 +65,7 @@ function CameraMode() {
 
   return (
     <div className="flex-col h-full animate-fade-in gap-4">
-      <div className="glass-panel text-center" style={{ padding: '1.5rem' }}>
+      <div className="brutal-panel text-center" style={{ padding: '1.5rem' }}>
         <h3 style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
           <Camera size={20} color="var(--accent-color)" /> Camera is Active
         </h3>

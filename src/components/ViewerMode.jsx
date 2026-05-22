@@ -43,7 +43,7 @@ function ViewerMode() {
   return (
     <div className="flex-col h-full animate-fade-in gap-4">
       {status !== 'connected' && (
-        <div className="glass-panel flex-col items-center justify-center text-center" style={{ flex: 1, gap: '1.5rem' }}>
+        <div className="brutal-panel flex-col items-center justify-center text-center" style={{ flex: 1, gap: '1.5rem' }}>
           <Monitor size={48} color="var(--success-color)" />
           <div>
             <h2 style={{ marginBottom: '0.5rem' }}>Connect to Camera</h2>

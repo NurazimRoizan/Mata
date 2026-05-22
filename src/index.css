@@ -1,13 +1,14 @@
 :root {
-  --bg-color: #0b0f19;
-  --panel-bg: rgba(255, 255, 255, 0.05);
-  --panel-border: rgba(255, 255, 255, 0.1);
-  --text-primary: #e2e8f0;
-  --text-secondary: #94a3b8;
-  --accent-color: #3b82f6;
-  --accent-hover: #2563eb;
-  --danger-color: #ef4444;
-  --success-color: #10b981;
+  /* --- MIDNIGHT BLACK & CYAN NEOBRUTALISM THEME --- */
+  --bg-primary: #000000;
+  --bg-secondary: #0A0A1F;
+  --text-primary: #E0FFFF;
+  --text-secondary: #99FFFF;
+  --accent-color: #00FFFF;
+  --accent-hover: #00E0E0;
+  --danger-color: #FF3366;
+  --success-color: #00FFFF; /* Reusing cyan for success to fit theme */
+  --dark-border-color: #1A1A50;
 }
 
 * {
@@ -18,13 +19,12 @@
 
 body {
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
-  background-color: var(--bg-color);
+  background-color: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background: radial-gradient(circle at 50% -20%, #1a233a 0%, var(--bg-color) 100%);
 }
 
 #root {
@@ -35,8 +35,9 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
+  font-weight: 800;
   letter-spacing: -0.025em;
+  color: var(--text-primary);
 }
 
 p {
@@ -44,76 +45,85 @@ p {
 }
 
 button {
-  background: var(--panel-bg);
-  border: 1px solid var(--panel-border);
+  background: var(--bg-secondary);
+  border: 2px solid var(--accent-color);
   color: var(--text-primary);
   padding: 0.75rem 1.5rem;
-  border-radius: 0.75rem;
+  border-radius: 0; /* Neobrutalist buttons usually have sharp corners or small radius */
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: bold;
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
+  transition: background-color 0.3s ease, transform 0.1s;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  backdrop-filter: blur(10px);
+  box-shadow: 4px 4px 0px var(--accent-color);
 }
 
 button:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 255, 255, 0.1);
   transform: translateY(-2px);
+  box-shadow: 6px 6px 0px var(--accent-color);
 }
 
 button:active {
-  transform: translateY(0);
+  transform: translateY(2px);
+  box-shadow: 2px 2px 0px var(--accent-color);
 }
 
 button.primary {
   background: var(--accent-color);
   border-color: var(--accent-color);
-  color: #fff;
+  color: var(--bg-primary);
+  box-shadow: 4px 4px 0px var(--text-secondary);
 }
 
 button.primary:hover {
   background: var(--accent-hover);
-  border-color: var(--accent-hover);
+  box-shadow: 6px 6px 0px var(--text-secondary);
 }
 
 button.danger {
-  background: rgba(239, 68, 68, 0.1);
-  border-color: rgba(239, 68, 68, 0.2);
+  background: var(--bg-secondary);
+  border-color: var(--danger-color);
   color: var(--danger-color);
+  box-shadow: 4px 4px 0px var(--danger-color);
 }
 
 button.danger:hover {
-  background: rgba(239, 68, 68, 0.2);
+  background: rgba(255, 51, 102, 0.1);
+  box-shadow: 6px 6px 0px var(--danger-color);
 }
 
-.glass-panel {
-  background: var(--panel-bg);
-  border: 1px solid var(--panel-border);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-radius: 1.5rem;
+button.danger:active {
+  box-shadow: 2px 2px 0px var(--danger-color);
+}
+
+.brutal-panel {
+  background: var(--bg-secondary);
+  border: 2px solid var(--dark-border-color);
+  border-radius: 0;
   padding: 2rem;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 6px 6px 0px var(--accent-color);
 }
 
 input {
-  background: rgba(0, 0, 0, 0.2);
-  border: 1px solid var(--panel-border);
+  background: #151540;
+  border: 2px solid var(--dark-border-color);
   color: var(--text-primary);
   padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
+  border-radius: 0;
   font-size: 1rem;
+  font-weight: bold;
   outline: none;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
   width: 100%;
 }
 
 input:focus {
   border-color: var(--accent-color);
+  box-shadow: 4px 4px 0px var(--accent-color);
 }
 
 /* Utilities */
