@@ -37,6 +37,15 @@ No installation required! Since Mata is a Progressive Web App (PWA), you can use
 5. Enter the **Connection ID** displayed on the camera device to establish a secure P2P stream.
 6. You are now securely monitoring your space! If motion is detected, your Viewer device will receive a push notification.
 
+## Performance & Limitations
+
+Mata relies entirely on local device processing and browser APIs. For the best experience, keep these limitations in mind:
+
+- **Device Compatibility:** Works on almost all smartphones from the last 7-8 years (supported in Chrome for Android 28+ and iOS Safari 11+).
+- **Backgrounding & Sleep:** Mobile operating systems are aggressive about killing background tasks. The Mata app **must remain open in the foreground** on the camera device. (The app utilizes the Wake Lock API and a dark overlay to prevent the screen from sleeping or burning in).
+- **Battery & Heat:** Continuous video encoding and motion scanning will drain the battery quickly. The camera device **must be plugged into a charger**. Ensure the device is in a well-ventilated spot, as running it 24/7 may cause older phones to overheat and thermal throttle.
+- **Connection Lifespan:** The peer-to-peer stream can technically stay alive indefinitely, but it will drop if your Wi-Fi disconnects or if the phone's IP address suddenly changes.
+
 ## Project Structure
 
 - `src/components/Home.jsx`: The landing page to choose between Camera and Viewer modes.
