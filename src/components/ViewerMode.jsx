@@ -5,11 +5,20 @@ import { Monitor, Play, Loader } from 'lucide-react';
 function ViewerMode() {
   const [targetId, setTargetId] = useState('');
   const [status, setStatus] = useState('idle'); // idle, connecting, connected, error
+  const [hasPermission, setHasPermission] = useState(false);
   const videoRef = useRef(null);
   const peerRef = useRef(null);
+  const dataConnRef = useRef(null);
 
   useEffect(() => {
     peerRef.current = new Peer();
+    
+    // Ask for Notification Permission
+    if ('Notification' in window) {
+      Notification.requestPermission().then(permission => {
+        setHasPermission(permission === 'granted');
+      });
+    }
     
     return () => {
       if (peerRef.current) peerRef.current.destroy();
@@ -21,6 +30,8 @@ function ViewerMode() {
     if (!targetId.trim()) return;
 
     setStatus('connecting');
+    
+    // 1. Establish Media Connection (Video)
     const call = peerRef.current.call(targetId, null); // We don't send our own stream
     
     call.on('stream', (remoteStream) => {
@@ -37,6 +48,27 @@ function ViewerMode() {
 
     call.on('close', () => {
       setStatus('idle');
+    });
+
+    // 2. Establish Data Connection (For Motion Alerts)
+    const conn = peerRef.current.connect(targetId);
+    dataConnRef.current = conn;
+
+    conn.on('open', () => {
+      console.log('Data connection opened to receive alerts');
+    });
+
+    conn.on('data', (data) => {
+      if (data === 'MOTION_DETECTED') {
+        console.log('Motion Detected Received!');
+        if (hasPermission && 'Notification' in window) {
+          // Send System Notification
+          new Notification('Mata Alert 🚨', {
+            body: 'Motion detected on your camera!',
+            icon: '/mata/vite.svg' // Provide an icon if available
+          });
+        }
+      }
     });
   };
 
