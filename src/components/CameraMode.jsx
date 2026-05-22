@@ -64,33 +64,38 @@ function CameraMode() {
   };
 
   return (
-    <div className="flex-col h-full animate-fade-in gap-4">
-      <div className="brutal-panel text-center" style={{ padding: '1.5rem' }}>
-        <h3 style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
-          <Camera size={20} color="var(--accent-color)" /> Camera is Active
+    <div className="flex-col h-full animate-pop-in gap-4">
+      <div className="brutal-panel pink-shadow text-center sticker-tilt-right" style={{ padding: '1.5rem', background: 'var(--bg-secondary)' }}>
+        <h3 style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', color: 'var(--accent-pink)' }}>
+          <div style={{ background: 'var(--accent-cyan)', padding: '0.5rem', border: '2px solid var(--text-primary)', transform: 'rotate(-5deg)' }}>
+             <Camera size={24} color="var(--bg-primary)" />
+          </div>
+          Camera is Active
         </h3>
-        <p style={{ fontSize: '0.875rem', marginBottom: '1rem' }}>Enter this ID on the viewer device:</p>
+        <p style={{ fontSize: '1rem', marginBottom: '1rem', background: 'var(--accent-cyan)', color: '#000', padding: '0.25rem 0.5rem', display: 'inline-block', transform: 'rotate(1deg)' }}>Enter this ID on the viewer device:</p>
         
         {peerId ? (
           <div 
-            className="flex items-center justify-center gap-2" 
+            className="flex items-center justify-center gap-2 sticker-tilt-left" 
             style={{ 
-              background: 'rgba(0,0,0,0.3)', 
+              background: '#000', 
               padding: '1rem', 
-              borderRadius: '0.5rem',
-              cursor: 'pointer' 
+              border: '3px solid var(--accent-pink)',
+              boxShadow: '4px 4px 0px var(--accent-cyan)',
+              cursor: 'pointer',
+              marginTop: '0.5rem'
             }}
             onClick={copyId}
           >
-            <span style={{ fontSize: '1.5rem', fontFamily: 'monospace', letterSpacing: '2px' }}>{peerId}</span>
-            {copied ? <CheckCircle size={20} color="var(--success-color)" /> : <Copy size={20} color="var(--text-secondary)" />}
+            <span style={{ fontSize: '1.5rem', fontFamily: 'monospace', letterSpacing: '2px', color: 'var(--text-primary)' }}>{peerId}</span>
+            {copied ? <CheckCircle size={24} color="var(--accent-cyan)" /> : <Copy size={24} color="var(--accent-pink)" />}
           </div>
         ) : (
-          <p>Generating ID...</p>
+          <p style={{ fontWeight: 'bold', color: 'var(--accent-pink)' }}>Generating ID...</p>
         )}
       </div>
 
-      <div style={{ flex: 1, position: 'relative', borderRadius: '1rem', overflow: 'hidden', background: '#000' }}>
+      <div style={{ flex: 1, position: 'relative', overflow: 'hidden', background: '#000', border: '4px solid var(--accent-cyan)', boxShadow: '6px 6px 0px var(--accent-pink)' }}>
         <video 
           ref={videoRef}
           autoPlay 
@@ -102,13 +107,15 @@ function CameraMode() {
         <div style={{
           position: 'absolute',
           top: 0, left: 0, right: 0, bottom: 0,
-          background: 'rgba(0,0,0,0.6)',
+          background: 'rgba(0,0,0,0.4)',
           pointerEvents: 'none',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
         }}>
-          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.875rem' }}>Screen dimmed to save battery</p>
+          <div className="sticker-tilt-right" style={{ background: 'var(--accent-pink)', color: '#000', padding: '0.5rem 1rem', border: '3px solid #000', fontWeight: 'bold' }}>
+             Screen dimmed to save battery
+          </div>
         </div>
       </div>
     </div>

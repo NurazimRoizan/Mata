@@ -1,13 +1,14 @@
 :root {
-  /* --- MIDNIGHT BLACK & CYAN NEOBRUTALISM THEME --- */
+  /* --- MIDNIGHT BLACK, CYAN & HOT PINK NEOBRUTALISM THEME --- */
   --bg-primary: #000000;
   --bg-secondary: #0A0A1F;
-  --text-primary: #E0FFFF;
-  --text-secondary: #99FFFF;
-  --accent-color: #00FFFF;
-  --accent-hover: #00E0E0;
+  --text-primary: #FFFFFF;
+  --text-secondary: #E0FFFF;
+  --accent-cyan: #00FFFF;
+  --accent-pink: #FF69B4;
+  --dark-pink: #C71585;
   --danger-color: #FF3366;
-  --success-color: #00FFFF; /* Reusing cyan for success to fit theme */
+  --success-color: #00FFFF; 
   --dark-border-color: #1A1A50;
 }
 
@@ -35,95 +36,116 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: -0.025em;
   color: var(--text-primary);
+  text-transform: uppercase;
 }
 
 p {
   color: var(--text-secondary);
+  font-weight: 500;
 }
 
+/* Button Base */
 button {
   background: var(--bg-secondary);
-  border: 2px solid var(--accent-color);
+  border: 3px solid var(--accent-cyan);
   color: var(--text-primary);
   padding: 0.75rem 1.5rem;
-  border-radius: 0; /* Neobrutalist buttons usually have sharp corners or small radius */
+  border-radius: 0; 
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.1s;
+  transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  box-shadow: 4px 4px 0px var(--accent-color);
+  box-shadow: 4px 4px 0px var(--accent-pink);
+  text-transform: uppercase;
 }
 
 button:hover {
-  background: rgba(0, 255, 255, 0.1);
-  transform: translateY(-2px);
-  box-shadow: 6px 6px 0px var(--accent-color);
+  background: var(--accent-cyan);
+  color: var(--bg-primary);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--accent-pink);
 }
 
 button:active {
-  transform: translateY(2px);
-  box-shadow: 2px 2px 0px var(--accent-color);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--accent-pink);
 }
 
+/* Primary Button (Pink Heavy) */
 button.primary {
-  background: var(--accent-color);
-  border-color: var(--accent-color);
+  background: var(--accent-pink);
+  border-color: var(--text-primary);
   color: var(--bg-primary);
-  box-shadow: 4px 4px 0px var(--text-secondary);
+  box-shadow: 4px 4px 0px var(--accent-cyan);
 }
 
 button.primary:hover {
-  background: var(--accent-hover);
-  box-shadow: 6px 6px 0px var(--text-secondary);
+  background: #FF1493; /* Deeper Pink */
+  box-shadow: 6px 6px 0px var(--accent-cyan);
+  color: #FFF;
 }
 
-button.danger {
-  background: var(--bg-secondary);
-  border-color: var(--danger-color);
-  color: var(--danger-color);
-  box-shadow: 4px 4px 0px var(--danger-color);
-}
-
-button.danger:hover {
-  background: rgba(255, 51, 102, 0.1);
-  box-shadow: 6px 6px 0px var(--danger-color);
-}
-
-button.danger:active {
-  box-shadow: 2px 2px 0px var(--danger-color);
-}
-
+/* Panels */
 .brutal-panel {
   background: var(--bg-secondary);
-  border: 2px solid var(--dark-border-color);
+  border: 3px solid var(--text-primary);
   border-radius: 0;
   padding: 2rem;
-  box-shadow: 6px 6px 0px var(--accent-color);
+  box-shadow: 6px 6px 0px var(--accent-cyan);
 }
 
+.brutal-panel.pink-shadow {
+  border-color: var(--accent-cyan);
+  box-shadow: 6px 6px 0px var(--accent-pink);
+}
+
+.brutal-panel.cyan-shadow {
+  border-color: var(--accent-pink);
+  box-shadow: 6px 6px 0px var(--accent-cyan);
+}
+
+/* Sticker Slants */
+.sticker-tilt-left {
+  transform: rotate(-3deg);
+  transition: transform 0.2s ease-out;
+}
+.sticker-tilt-left:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.sticker-tilt-right {
+  transform: rotate(3deg);
+  transition: transform 0.2s ease-out;
+}
+.sticker-tilt-right:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+/* Inputs */
 input {
   background: #151540;
-  border: 2px solid var(--dark-border-color);
+  border: 3px solid var(--accent-cyan);
   color: var(--text-primary);
   padding: 0.75rem 1rem;
   border-radius: 0;
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: bold;
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: all 0.2s;
   width: 100%;
 }
 
 input:focus {
-  border-color: var(--accent-color);
-  box-shadow: 4px 4px 0px var(--accent-color);
+  border-color: var(--accent-pink);
+  box-shadow: 4px 4px 0px var(--accent-pink);
+  transform: translate(-2px, -2px);
 }
 
 /* Utilities */
@@ -140,11 +162,11 @@ input:focus {
 .h-full { height: 100%; }
 
 /* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.9) rotate(-5deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.4s ease-out forwards;
+.animate-pop-in {
+  animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }

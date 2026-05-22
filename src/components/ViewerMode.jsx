@@ -41,16 +41,18 @@ function ViewerMode() {
   };
 
   return (
-    <div className="flex-col h-full animate-fade-in gap-4">
+    <div className="flex-col h-full animate-pop-in gap-4">
       {status !== 'connected' && (
-        <div className="brutal-panel flex-col items-center justify-center text-center" style={{ flex: 1, gap: '1.5rem' }}>
-          <Monitor size={48} color="var(--success-color)" />
+        <div className="brutal-panel cyan-shadow flex-col items-center justify-center text-center sticker-tilt-left" style={{ flex: 1, gap: '1.5rem', background: 'var(--bg-secondary)' }}>
+          <div style={{ background: 'var(--accent-pink)', padding: '1rem', border: '3px solid var(--text-primary)', transform: 'rotate(5deg)' }}>
+             <Monitor size={48} color="var(--bg-primary)" />
+          </div>
           <div>
-            <h2 style={{ marginBottom: '0.5rem' }}>Connect to Camera</h2>
-            <p>Enter the Connection ID displayed on your camera device.</p>
+            <h2 style={{ marginBottom: '0.5rem', color: 'var(--accent-cyan)' }}>Connect to Camera</h2>
+            <p style={{ background: 'var(--accent-pink)', color: '#000', padding: '0.25rem 0.5rem', display: 'inline-block', transform: 'rotate(-2deg)' }}>Enter the Connection ID displayed on your camera device.</p>
           </div>
           
-          <form onSubmit={connectToCamera} className="flex-col gap-4" style={{ width: '100%', maxWidth: '300px' }}>
+          <form onSubmit={connectToCamera} className="flex-col gap-4 sticker-tilt-right" style={{ width: '100%', maxWidth: '300px', marginTop: '1rem' }}>
             <input 
               type="text" 
               placeholder="e.g. 1a2b-3c4d" 
@@ -59,29 +61,31 @@ function ViewerMode() {
               style={{ textAlign: 'center', fontSize: '1.25rem', letterSpacing: '1px' }}
             />
             <button type="submit" className="primary w-full" disabled={status === 'connecting' || !targetId}>
-              {status === 'connecting' ? <Loader className="lucide-spin" size={20} /> : <Play size={20} />}
+              {status === 'connecting' ? <Loader className="lucide-spin" size={24} /> : <Play size={24} />}
               {status === 'connecting' ? 'Connecting...' : 'Connect'}
             </button>
           </form>
           
           {status === 'error' && (
-            <p style={{ color: 'var(--danger-color)', fontSize: '0.875rem' }}>Failed to connect. Please check the ID.</p>
+            <div className="sticker-tilt-left" style={{ background: 'var(--danger-color)', color: '#fff', padding: '0.5rem', border: '3px solid #000', fontWeight: 'bold' }}>
+               Failed to connect. Please check the ID.
+            </div>
           )}
         </div>
       )}
 
       {status === 'connected' && (
-        <div style={{ flex: 1, position: 'relative', borderRadius: '1rem', overflow: 'hidden', background: '#000' }}>
+        <div style={{ flex: 1, position: 'relative', overflow: 'hidden', background: '#000', border: '4px solid var(--accent-pink)', boxShadow: '6px 6px 0px var(--accent-cyan)' }}>
           <video 
             ref={videoRef}
             autoPlay 
             playsInline 
             style={{ width: '100%', height: '100%', objectFit: 'contain' }}
           />
-          <div style={{ position: 'absolute', top: '1rem', right: '1rem' }}>
-             <div style={{ background: 'rgba(0,0,0,0.5)', padding: '0.5rem 1rem', borderRadius: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.875rem' }}>
-                <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--success-color)' }}></div>
-                Live
+          <div style={{ position: 'absolute', top: '1rem', right: '1rem' }} className="sticker-tilt-right">
+             <div style={{ background: 'var(--accent-cyan)', color: '#000', border: '3px solid #000', padding: '0.5rem 1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1rem', fontWeight: 'bold' }}>
+                <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: 'var(--danger-color)', border: '2px solid #000' }}></div>
+                LIVE
              </div>
           </div>
         </div>

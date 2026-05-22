@@ -3,35 +3,37 @@ import { Camera, Monitor } from 'lucide-react';
 
 function Home({ setMode }) {
   return (
-    <div className="flex-col items-center justify-center h-full animate-fade-in" style={{ gap: '2rem' }}>
+    <div className="flex-col items-center justify-center h-full animate-pop-in" style={{ gap: '2rem' }}>
       <div className="text-center" style={{ maxWidth: '400px', marginBottom: '1rem' }}>
-        <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>Repurpose your old phone.</h1>
-        <p>Turn this device into a smart security camera, or use it as a viewer to watch a stream from another device securely over the local network.</p>
+        <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem', textShadow: '2px 2px 0px var(--accent-pink)' }}>Repurpose your old phone.</h1>
+        <p style={{ background: 'var(--accent-cyan)', color: 'var(--bg-primary)', padding: '0.5rem', display: 'inline-block', transform: 'rotate(-1deg)', border: '2px solid var(--bg-primary)' }}>
+          Turn this device into a smart security camera, or use it as a viewer to watch a stream securely.
+        </p>
       </div>
 
       <div className="flex gap-4" style={{ flexWrap: 'wrap', justifyContent: 'center' }}>
         <button 
-          className="brutal-panel flex-col items-center gap-4" 
-          style={{ width: '200px', height: '220px', cursor: 'pointer' }}
+          className="brutal-panel pink-shadow sticker-tilt-left flex-col items-center gap-4" 
+          style={{ width: '220px', height: '240px', cursor: 'pointer', padding: '0' }}
           onClick={() => setMode('camera')}
         >
-          <div style={{ background: 'var(--bg-primary)', border: '2px solid var(--accent-color)', padding: '1rem', borderRadius: '0', boxShadow: '4px 4px 0px var(--accent-color)' }}>
-            <Camera size={48} color="var(--accent-color)" />
+          <div style={{ background: 'var(--accent-cyan)', border: '3px solid var(--bg-primary)', padding: '1rem', borderRadius: '0', boxShadow: '4px 4px 0px var(--accent-pink)', marginTop: '2rem' }}>
+            <Camera size={56} color="var(--bg-primary)" />
           </div>
-          <h3 style={{ fontSize: '1.25rem', marginTop: '0.5rem' }}>Camera Mode</h3>
-          <p style={{ fontSize: '0.875rem', margin: 0 }}>Host a video stream</p>
+          <h3 style={{ fontSize: '1.5rem', marginTop: '1rem', color: 'var(--accent-pink)', textShadow: '1px 1px 0px var(--bg-primary)' }}>Camera Mode</h3>
+          <p style={{ fontSize: '1rem', margin: 0, paddingBottom: '2rem' }}>Host a video stream</p>
         </button>
 
         <button 
-          className="brutal-panel flex-col items-center gap-4" 
-          style={{ width: '200px', height: '220px', cursor: 'pointer' }}
+          className="brutal-panel cyan-shadow sticker-tilt-right flex-col items-center gap-4" 
+          style={{ width: '220px', height: '240px', cursor: 'pointer', padding: '0' }}
           onClick={() => setMode('viewer')}
         >
-          <div style={{ background: 'var(--bg-primary)', border: '2px solid var(--success-color)', padding: '1rem', borderRadius: '0', boxShadow: '4px 4px 0px var(--success-color)' }}>
-            <Monitor size={48} color="var(--success-color)" />
+          <div style={{ background: 'var(--accent-pink)', border: '3px solid var(--bg-primary)', padding: '1rem', borderRadius: '0', boxShadow: '4px 4px 0px var(--accent-cyan)', marginTop: '2rem' }}>
+            <Monitor size={56} color="var(--bg-primary)" />
           </div>
-          <h3 style={{ fontSize: '1.25rem', marginTop: '0.5rem' }}>Viewer Mode</h3>
-          <p style={{ fontSize: '0.875rem', margin: 0 }}>Watch a stream</p>
+          <h3 style={{ fontSize: '1.5rem', marginTop: '1rem', color: 'var(--accent-cyan)', textShadow: '1px 1px 0px var(--bg-primary)' }}>Viewer Mode</h3>
+          <p style={{ fontSize: '1rem', margin: 0, paddingBottom: '2rem' }}>Watch a stream</p>
         </button>
       </div>
     </div>
