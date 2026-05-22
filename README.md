@@ -3,6 +3,12 @@
 A Progressive Web App (PWA) that turns old smartphones into peer-to-peer security cameras using WebRTC. 
 "Mata" means "Eye" in several languages, symbolizing its purpose to keep an eye on your belongings.
 
+## Live App
+
+No installation required! Since Mata is a Progressive Web App (PWA), you can use it right away directly from your browser. 
+
+👉 **[Try Mata Live](https://nurazimroizan.github.io/Mata/)** 👈
+
 ## Features
 
 - **Peer-to-Peer Streaming:** Uses WebRTC for secure, direct device-to-device video streaming with minimal latency.
@@ -21,43 +27,6 @@ A Progressive Web App (PWA) that turns old smartphones into peer-to-peer securit
 - **P2P Communication:** [PeerJS](https://peerjs.com/) (WebRTC)
 - **Icons:** Lucide React
 - **Deployment:** GitHub Pages (Automated via GitHub Actions)
-
-## Getting Started
-
-### Prerequisites
-- Node.js (v20 or higher recommended)
-- npm or yarn
-
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone <repository-url>
-   cd mata
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Open your browser and navigate to the local URL provided by Vite (usually `http://localhost:5173`).
-
-### Building for Production
-
-To create a production build:
-```bash
-npm run build
-```
-To preview the production build locally:
-```bash
-npm run preview
-```
 
 ## How to Use
 
