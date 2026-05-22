@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="flex-col h-full w-full">
-      <header style={{ padding: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem', borderBottom: '4px solid var(--text-primary)', background: 'var(--bg-secondary)', boxShadow: '0 4px 0px var(--accent-cyan)' }}>
+      <header style={{ padding: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem', borderBottom: '4px solid var(--text-primary)', background: 'var(--bg-secondary)', boxShadow: '0 4px 0px var(--accent-cyan)', position: 'relative', zIndex: 10 }}>
         <div style={{ background: 'var(--accent-pink)', padding: '0.5rem', border: '2px solid var(--text-primary)', transform: 'rotate(-5deg)' }}>
            <Shield size={28} color="var(--bg-primary)" />
         </div>
@@ -24,7 +24,7 @@ function App() {
         )}
       </header>
 
-      <main style={{ flex: 1, padding: '1rem', overflow: 'hidden' }}>
+      <main style={{ flex: 1, padding: '1rem', overflowY: 'auto', display: 'flex', flexDirection: 'column', position: 'relative', zIndex: 1 }}>
         {mode === 'home' && <Home setMode={setMode} />}
         {mode === 'camera' && <CameraMode />}
         {mode === 'viewer' && <ViewerMode />}

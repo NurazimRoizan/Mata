@@ -3,7 +3,7 @@ import { Camera, Monitor } from 'lucide-react';
 
 function Home({ setMode }) {
   return (
-    <div className="flex-col items-center justify-center h-full animate-pop-in" style={{ gap: '2rem' }}>
+    <div className="flex-col items-center animate-pop-in" style={{ gap: '2rem', margin: 'auto', padding: '1rem 0' }}>
       <div className="text-center" style={{ maxWidth: '400px', marginBottom: '1rem' }}>
         <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem', textShadow: '2px 2px 0px var(--accent-pink)' }}>Repurpose your old phone.</h1>
         <p style={{ background: 'var(--accent-cyan)', color: 'var(--bg-primary)', padding: '0.5rem', display: 'inline-block', transform: 'rotate(-1deg)', border: '2px solid var(--bg-primary)' }}>
